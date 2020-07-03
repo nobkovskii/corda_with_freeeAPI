@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Example front-end.</title>
+
+    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:if="${code != null}" class="alert alert-primary" role="alert">
+    <p th:text="${code}"></p>
+</div>
+<div th:if="${error != null}" class="alert alert-warning" role="alert">
+    <p th:text="${error}"></p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <form th:action="getCompanies" method="post">
+                        <div class="form-group row">
+                            <label for="token">token</label>
+                            <input type="text" class="form-control" name="token" id="token" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">事業所取得</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:if="${data != null}" class="alert alert-primary" role="alert">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-header">事業所</div>
+                    <div class="card-body">
+                        <p th:text="${data}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</div>
+
+</body>
+</html>
